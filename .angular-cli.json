@@ -22,9 +22,10 @@
             "styles.css"
         ],
         "scripts": [
-            "/Users/raja/Projects/frontend/riskeditor/node_modules/jquery/dist/jquery.min.js",
-            "/Users/raja/Projects/frontend/riskeditor/node_modules/popper.js/dist/popper.min.js",
-            "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+            "./../node_modules/jquery/dist/jquery.min.js",
+            "./../node_modules/popper.js/dist/popper.min.js",
+            "./../node_modules/popper.js/dist/popper-utils.min.js",
+            "./../node_modules/bootstrap/dist/js/bootstrap.min.js"
 
         ],
         "environmentSource": "environments/environment.ts",
