@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Risk Editor';
+  dynamicTabs:Array<string> = ['Dynamic1','Dynamic2'];
+
+  addDynamictTab():void{
+
+    this.dynamicTabs.push('Dynamic' + this.dynamicTabs.length)
+  }
 }
