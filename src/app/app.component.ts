@@ -9,6 +9,12 @@ export class AppComponent {
   title = 'Risk Editor';
   dynamicTabs:Array<string> = ['Dynamic1','Dynamic2'];
 
+  model = {
+    left: true,
+    middle: false,
+    right: false
+  };
+
   addDynamictTab():void{
 
     this.dynamicTabs.push('Dynamic' + this.dynamicTabs.length)
