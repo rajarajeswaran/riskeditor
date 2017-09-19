@@ -1,24 +1,14 @@
 
 
-<nav class="navbar navbar-expand-sm navbar-light">
-    <button class="navbar-toggler " type="button"
-      (click)="isCollapsed = !isCollapsed" [attr.aria-expanded] = "!isCollapsed" aria-controls="navbarSupportedContent"
-       aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand " href="#"><fa name="cog" animation="spin"> </fa> </a>
-    <div class="navbar-collapse" [ngbCollapse] = "isCollapsed"  id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto ">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
+<app-top-nav></app-top-nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2">
+      <app-side-nav></app-side-nav>
     </div>
-  </nav>
+    <div class="col-10">
+      <p>Components to be injected here</p>
+    </div>
+  </div>
+</div>
 

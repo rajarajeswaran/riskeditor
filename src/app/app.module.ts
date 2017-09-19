@@ -8,12 +8,16 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
 
 
 import { AppComponent } from './app.component';
-import {HomeComponent} from './home/home.component'
+import {HomeComponent} from './home/home.component';
+import { TopNavComponent } from './top-nav/top-nav.component';
+import { SideNavComponent } from './side-nav/side-nav.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    TopNavComponent,
+    HomeComponent,
+    SideNavComponent
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -24,8 +28,5 @@ import {HomeComponent} from './home/home.component'
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
-
-
 
 }
