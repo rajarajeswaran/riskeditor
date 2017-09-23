@@ -1,8 +1,10 @@
 import { Component,  Inject } from '@angular/core';
 import  * as Redux  from 'redux';
-import { AppStore } from './app-state/app.store';
-import { AppState } from './app-state/app.state';
-import * as CounterActions from './app-state/counter.actions';
+
+
+import { CounterStore } from './app-state/counter/counter.store';
+import { CounterState } from './app-state/counter/Counter.state';
+import * as CounterActions from './app-state/counter/counter.actions';
 
 @Component({
   selector: 'app-root',
@@ -17,13 +19,13 @@ export class AppComponent {
   title = 'Risk Editor';
   counter: number;
 
-    constructor(@Inject(AppStore) private store: Redux.Store<AppState>) {
+    constructor(@Inject(CounterStore) private store: Redux.Store<CounterState>) {
       store.subscribe(() => this.readState());
       this.readState();
     }
 
     readState() {
-      const state: AppState = this.store.getState() as AppState;
+      const state: CounterState = this.store.getState() as CounterState;
       this.counter = state.counter;
     }
 

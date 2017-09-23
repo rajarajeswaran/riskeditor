@@ -5,7 +5,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 import icons from 'glyphicons'
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
-import { appStoreProviders } from './app-state/app.store';
+import { counterStoreProviders } from './app-state/counter/counter.store';
 
 
 import { AppComponent } from './app.component';
@@ -25,7 +25,7 @@ import { SideNavComponent } from './side-nav/side-nav.component'
     BrowserModule,
     NgbModule.forRoot(),
   ],
-  providers: [appStoreProviders],
+  providers: [counterStoreProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {
