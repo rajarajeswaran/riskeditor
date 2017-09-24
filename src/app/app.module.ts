@@ -5,14 +5,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 import icons from 'glyphicons'
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
-import { counterStoreProviders } from './app-state/counter/counter.store';
-import { riskStoreProviders } from './app-state/risk/risk.store';
-
 import { AppComponent } from './app.component';
 import {HomeComponent} from './home/home.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
-import { RiskComponent } from './risk/risk.component'
+
+import { RiskModule } from './risk/risk.module'
 
 
 @NgModule({
@@ -20,16 +18,15 @@ import { RiskComponent } from './risk/risk.component'
     AppComponent,
     TopNavComponent,
     HomeComponent,
-    SideNavComponent,
-    RiskComponent
+    SideNavComponent
   ],
   imports: [
     AngularFontAwesomeModule,
     BrowserModule,
     NgbModule.forRoot(),
+    RiskModule,
   ],
-  providers: [counterStoreProviders,
-    riskStoreProviders],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
