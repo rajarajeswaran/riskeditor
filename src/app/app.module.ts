@@ -11,7 +11,8 @@ import { riskStoreProviders } from './app-state/risk/risk.store';
 import { AppComponent } from './app.component';
 import {HomeComponent} from './home/home.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
-import { SideNavComponent } from './side-nav/side-nav.component'
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { RiskComponent } from './risk/risk.component'
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SideNavComponent } from './side-nav/side-nav.component'
     AppComponent,
     TopNavComponent,
     HomeComponent,
-    SideNavComponent
+    SideNavComponent,
+    RiskComponent
   ],
   imports: [
     AngularFontAwesomeModule,

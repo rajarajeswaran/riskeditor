@@ -7,12 +7,10 @@
             <app-side-nav></app-side-nav>
         </div>
         <div class="col-10">
-
             <p>
                 The counter value is:
                 <b>{{ counter }}</b>
             </p>
-
             <p>
                 <button (click)="increment()" class="btn btn-primary">
                 Increment
@@ -22,14 +20,7 @@
               </button>
             </p>
 
-            <p>this is current risk {{risk.policyId}} </p>
-            <p>
-
-                <button (click)="setCurrentRisk()" class="btn btn-default">
-               set current risk
-            </button>
-            </p>
-
+            <app-risk></app-risk>
         </div>
     </div>
 </div>
