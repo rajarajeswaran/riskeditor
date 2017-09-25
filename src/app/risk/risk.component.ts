@@ -26,7 +26,6 @@ export class RiskComponent  {
   }
 
   setCurrentRisk(){
-    console.log('clicked');
     this.riskStore.dispatch(RiskActions.setCurrentRisk())
   };
 

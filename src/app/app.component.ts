@@ -11,6 +11,7 @@ import { Component,  Inject } from '@angular/core';
 
 export class AppComponent {
   public isCollapsed = true;
+  public isCollapsed1 = false;
 
   title = 'Risk Editor';
 

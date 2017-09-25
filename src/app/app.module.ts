@@ -11,6 +11,7 @@ import { TopNavComponent } from './top-nav/top-nav.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 
 import { RiskModule } from './risk/risk.module'
+import { layoutStoreProviders } from './app-state/laytout/layout.store';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { RiskModule } from './risk/risk.module'
     NgbModule.forRoot(),
     RiskModule,
   ],
-  providers: [],
+  providers: [layoutStoreProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {
