@@ -1,5 +1,4 @@
 <button type="button" class="btn btn-outline-secondary btn-block">Home</button>
-<button type="button" class="btn btn-outline-secondary btn-block">AH-New</button>
-<button type="button" class="btn btn-outline-secondary btn-block">AH-New</button>
-<button type="button" class="btn btn-outline-secondary btn-block">AH-New</button>
-<button type="button" class="btn btn-outline-secondary btn-block">AH-New</button>
+<ng-container *ngFor="let window of layout.children; let i = index">
+    <button type="button" class="btn btn-outline-secondary btn-block">AH-New</button>
+</ng-container>

@@ -13,9 +13,7 @@ import * as LayoutActions from '../app-state/laytout/layout.actions';
   styleUrls: ['./top-nav.component.css']
 })
 export class TopNavComponent implements OnInit {
-  readLayoutState(): any {
 
-  }
   public isCollapsed = true;
   layout : LayoutState;
   constructor(@Inject(LayoutStore) private layoutStore: Redux.Store<LayoutState>) {
@@ -25,7 +23,9 @@ export class TopNavComponent implements OnInit {
 
   ngOnInit() {
   }
+  readLayoutState(): void {
 
+      }
 
   addWindow(){
     this.layoutStore.dispatch(LayoutActions.addWindow())

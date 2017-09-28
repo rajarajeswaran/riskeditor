@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import  * as Redux  from 'redux';
+
+import { LayoutStore } from '../app-state/laytout/layout.store';
+import { LayoutState } from '../app-state/laytout/layout.state';
+import * as LayoutActions from '../app-state/laytout/layout.actions';
 
 @Component({
   selector: 'app-side-nav',
@@ -7,8 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
-  constructor() { }
-
+  layout : LayoutState;
+  constructor(@Inject(LayoutStore) private layoutStore: Redux.Store<LayoutState>) {
+    layoutStore.subscribe(()=> this.readLayoutState());
+    this.readLayoutState();
+  }
+  readLayoutState(): void {
+    this.layout = this.layoutStore.getState();
+      }
   ngOnInit() {
   }
 
