@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { riskStoreProviders } from './../app-state/risk/risk.store';
 import { RiskComponent } from './risk.component';
 
+
+
 @NgModule({
   imports: [
     CommonModule

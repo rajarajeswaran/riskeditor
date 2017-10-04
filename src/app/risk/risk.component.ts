@@ -5,6 +5,7 @@ import  * as Redux  from 'redux';
 import { RiskStore } from './../app-state/risk/risk.store';
 import { RiskState } from './../app-state/risk/risk.state';
 import * as RiskActions from './../app-state/risk/risk.actions';
+import {Risk} from './../app-state/risk/risk.model'
 
 
 @Component({
@@ -13,15 +14,16 @@ import * as RiskActions from './../app-state/risk/risk.actions';
   styleUrls: ['./risk.component.css']
 })
 export class RiskComponent  {
-  risk : RiskState;
+  risk : Risk;
   constructor(@Inject(RiskStore) private riskStore: Redux.Store<RiskState>) {
     riskStore.subscribe(()=> this.readRiskState());
     this.readRiskState();
   }
 
   readRiskState() {
+    this.riskStore.dispatch(RiskActions.addNewRisk())
     const state: RiskState = this.riskStore.getState() as RiskState;
-    this.risk = state;
+    this.risk = state.risks[0];
 
   }
 

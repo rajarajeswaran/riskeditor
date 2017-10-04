@@ -1,5 +1,6 @@
+import {Risk} from './risk.model'
+
 export interface RiskState
 {
-  policyId : string;
-  Description: string;
+  risks:Array<Risk>
 }
