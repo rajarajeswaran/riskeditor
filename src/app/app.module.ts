@@ -11,7 +11,13 @@ import { TopNavComponent } from './top-nav/top-nav.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 
 import { RiskModule } from './risk/risk.module'
-import { layoutStoreProviders } from './app-state/laytout/layout.store';
+// import { layoutStoreProviders } from './app-state/laytout/layout.store';
+
+
+import {  AppState  } from './app-state/app.state';
+import {  default as reducer } from './app-state/app.reducer';
+import { appStoreProviders } from './app-state/app.store';
+
 
 
 @NgModule({
@@ -27,7 +33,7 @@ import { layoutStoreProviders } from './app-state/laytout/layout.store';
     NgbModule.forRoot(),
     RiskModule,
   ],
-  providers: [layoutStoreProviders],
+  providers: [appStoreProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

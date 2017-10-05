@@ -17,11 +17,11 @@ export class RiskComponent  {
   risk : Risk;
   constructor(@Inject(RiskStore) private riskStore: Redux.Store<RiskState>) {
     riskStore.subscribe(()=> this.readRiskState());
-    this.readRiskState();
+    this.riskStore.dispatch(RiskActions.addNewRisk())
   }
 
   readRiskState() {
-    this.riskStore.dispatch(RiskActions.addNewRisk())
+
     const state: RiskState = this.riskStore.getState() as RiskState;
     this.risk = state.risks[0];
 
