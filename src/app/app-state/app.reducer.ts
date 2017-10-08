@@ -9,8 +9,8 @@ import {RiskReducer} from './risk/risk.reducer'
 import {LayoutReducer} from './laytout/layout.reducer'
 
 
-const rootReducer : Reducer<AppState> = combineReducers<AppState>({
-  LayoutReducer:LayoutReducer,
-  RiskReducer:RiskReducer
+const rootReducer  = combineReducers<AppState>({
+  LayoutState:LayoutReducer,
+  RiskState:RiskReducer
 })
 export default rootReducer;

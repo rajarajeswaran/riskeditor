@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { riskStoreProviders } from './../app-state/risk/risk.store';
+import { appStoreProviders } from './../app-state/app.store';
 import { RiskComponent } from './risk.component';
 
 
@@ -12,7 +12,7 @@ import { RiskComponent } from './risk.component';
   declarations: [
     RiskComponent],
   providers:[
-    riskStoreProviders
+    appStoreProviders
   ],
   exports:[
     RiskComponent

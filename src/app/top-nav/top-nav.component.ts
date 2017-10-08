@@ -2,7 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import  * as Redux  from 'redux';
 
 
-import { LayoutStore } from '../app-state/laytout/layout.store';
+import { AppStore } from '../app-state/app.store';
+import { AppState } from '../app-state/app.state';
 import { LayoutState } from '../app-state/laytout/layout.state';
 import * as LayoutActions from '../app-state/laytout/layout.actions';
 
@@ -16,8 +17,8 @@ export class TopNavComponent implements OnInit {
 
   public isCollapsed = true;
   layout : LayoutState;
-  constructor(@Inject(LayoutStore) private layoutStore: Redux.Store<LayoutState>) {
-    layoutStore.subscribe(()=> this.readLayoutState());
+  constructor(@Inject(AppStore) private store: Redux.Store<AppState>) {
+    store.subscribe(()=> this.readLayoutState());
     this.readLayoutState();
   }
 
@@ -28,7 +29,7 @@ export class TopNavComponent implements OnInit {
       }
 
   addWindow(){
-    this.layoutStore.dispatch(LayoutActions.addWindow())
+    this.store.dispatch(LayoutActions.addWindow())
   };
 
 }

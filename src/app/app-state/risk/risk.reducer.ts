@@ -22,4 +22,4 @@ function(state: RiskState = initialState, action: Action): RiskState {
   }
 };
 
-
+export const getRiskState = (state): RiskState => state.RiskState;

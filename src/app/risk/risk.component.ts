@@ -2,10 +2,12 @@ import { Component,  Inject } from '@angular/core';
 import  * as Redux  from 'redux';
 
 
-import { RiskStore } from './../app-state/risk/risk.store';
+import { AppStore } from './../app-state/app.store';
+import { AppState } from './../app-state/app.state';
 import { RiskState } from './../app-state/risk/risk.state';
 import * as RiskActions from './../app-state/risk/risk.actions';
 import {Risk} from './../app-state/risk/risk.model'
+import { getRiskState } from '../app-state/risk/risk.reducer';
 
 
 @Component({
@@ -15,20 +17,20 @@ import {Risk} from './../app-state/risk/risk.model'
 })
 export class RiskComponent  {
   risk : Risk;
-  constructor(@Inject(RiskStore) private riskStore: Redux.Store<RiskState>) {
-    riskStore.subscribe(()=> this.readRiskState());
-    this.riskStore.dispatch(RiskActions.addNewRisk())
+  constructor(@Inject(AppStore) private store: Redux.Store<AppState>) {
+    store.subscribe(()=> this.readRiskState());
+    this.store.dispatch(RiskActions.addNewRisk())
   }
 
   readRiskState() {
 
-    const state: RiskState = this.riskStore.getState() as RiskState;
+    const state: RiskState = getRiskState(this.store)
     this.risk = state.risks[0];
 
   }
 
   setCurrentRisk(){
-    this.riskStore.dispatch(RiskActions.setCurrentRisk())
+    this.store.dispatch(RiskActions.setCurrentRisk())
   };
 
 }

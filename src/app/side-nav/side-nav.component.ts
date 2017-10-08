@@ -1,9 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import  * as Redux  from 'redux';
 
-import { LayoutStore } from '../app-state/laytout/layout.store';
+import { AppStore } from '../app-state/app.store';
+import { AppState } from '../app-state/app.state';
 import { LayoutState } from '../app-state/laytout/layout.state';
 import * as LayoutActions from '../app-state/laytout/layout.actions';
+import { getLayoutState } from '../app-state/laytout/layout.reducer';
 
 @Component({
   selector: 'app-side-nav',
@@ -13,12 +15,20 @@ import * as LayoutActions from '../app-state/laytout/layout.actions';
 export class SideNavComponent implements OnInit {
 
   layout : LayoutState;
-  constructor(@Inject(LayoutStore) private layoutStore: Redux.Store<LayoutState>) {
-    layoutStore.subscribe(()=> this.readLayoutState());
-    this.readLayoutState();
+  constructor(@Inject(AppStore) private store: Redux.Store<AppState>) {
+    store.subscribe(()=> this.readLayoutState());
+  //  this.readLayoutState();
   }
   readLayoutState(): void {
-    this.layout = this.layoutStore.getState();
+    console.log('called layout')
+    console.log(this.store.getState());
+
+    var x = this.store.getState();
+    console.log(x);
+    console.log(getLayoutState(this.store.getState()));
+    this.layout = getLayoutState(this.store.getState());
+    console.log('called layout')
+    console.log(this.layout);
       }
   ngOnInit() {
   }

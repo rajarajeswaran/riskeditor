@@ -2,8 +2,10 @@ import {Component,Inject} from '@angular/core'
 
 import  * as Redux  from 'redux';
 
-import { LayoutStore } from '../app-state/laytout/layout.store';
+import { AppStore } from '../app-state/app.store';
+import { AppState } from '../app-state/app.state';
 import { LayoutState } from '../app-state/laytout/layout.state';
+import { LayoutReducer, getLayoutState } from '../app-state/laytout/layout.reducer';
 import * as LayoutActions from '../app-state/laytout/layout.actions';
 
 @Component({
@@ -12,11 +14,11 @@ import * as LayoutActions from '../app-state/laytout/layout.actions';
 })
 export class HomeComponent{
   layout : LayoutState;
-  constructor(@Inject(LayoutStore) private layoutStore: Redux.Store<LayoutState>) {
-    layoutStore.subscribe(()=> this.readLayoutState());
+  constructor(@Inject(AppStore) private store: Redux.Store<AppState>) {
+    store.subscribe(()=> this.readLayoutState());
     this.readLayoutState();
   }
   readLayoutState(): void {
-    this.layout = this.layoutStore.getState();
+    this.layout = getLayoutState(this.store);
       }
 }

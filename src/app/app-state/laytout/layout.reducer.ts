@@ -17,8 +17,8 @@ function(state: LayoutState = initialState, action: Action): LayoutState {
     case LayoutActions.ADD_WINDOW:
     let cloneState = Object.assign({}, state);
     cloneState.children.push({
-      windowId:'NewWindow',
-      description:'New Window description',
+      windowId:'NewWindow1',
+      description:'New Window description1',
       isActive:true,
       children:new Array<LayoutState>()});
     return cloneState;
@@ -28,5 +28,9 @@ function(state: LayoutState = initialState, action: Action): LayoutState {
       return state;
   }
 };
+
+
+
+export const getLayoutState = (state): LayoutState => state.LayoutState ;
 
 
