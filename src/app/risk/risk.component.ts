@@ -19,18 +19,16 @@ export class RiskComponent  {
   risk : Risk;
   constructor(@Inject(AppStore) private store: Redux.Store<AppState>) {
     store.subscribe(()=> this.readRiskState());
-    this.store.dispatch(RiskActions.addNewRisk())
-  }
+      }
 
   readRiskState() {
 
-    const state: RiskState = getRiskState(this.store)
-    this.risk = state.risks[0];
-
+    const state: RiskState = getRiskState(this.store.getState())
+    this.risk = this.risk ? this.risk: state.risks[state.risks.length-1];
   }
 
-  setCurrentRisk(){
-    this.store.dispatch(RiskActions.setCurrentRisk())
-  };
+  // setCurrentRisk(){
+  //   this.store.dispatch(RiskActions.setCurrentRisk())
+  // };
 
 }
