@@ -35,9 +35,14 @@ export class TopNavComponent implements OnInit {
     this.risk = getRiskState(this.store.getState());
       }
 
-  addWindow(){
-    this.store.dispatch(LayoutActions.addWindow())
+  addRisk(){
+
     this.store.dispatch(RiskActions.addNewRisk())
   };
+
+  editRisk(){
+
+        this.store.dispatch(RiskActions.editRisk())
+      };
 
 }

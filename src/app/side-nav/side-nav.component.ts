@@ -3,9 +3,7 @@ import  * as Redux  from 'redux';
 
 import { AppStore } from '../app-state/app.store';
 import { AppState } from '../app-state/app.state';
-import { LayoutState } from '../app-state/laytout/layout.state';
-import * as LayoutActions from '../app-state/laytout/layout.actions';
-import { getLayoutState } from '../app-state/laytout/layout.reducer';
+import { getRiskIds } from '../app-state/risk/risk.reducer';
 
 @Component({
   selector: 'app-side-nav',
@@ -14,23 +12,17 @@ import { getLayoutState } from '../app-state/laytout/layout.reducer';
 })
 export class SideNavComponent implements OnInit {
 
-  layout : LayoutState;
+  riskIds : string[];
   constructor(@Inject(AppStore) private store: Redux.Store<AppState>) {
-    store.subscribe(()=> this.readLayoutState());
+    store.subscribe(()=> this.readAppState());
   //  this.readLayoutState();
   }
-  readLayoutState(): void {
-    console.log('called layout')
-    console.log(this.store.getState());
-
-    var x = this.store.getState();
-    console.log(x);
-    console.log(getLayoutState(this.store.getState()));
-    this.layout = getLayoutState(this.store.getState());
-    console.log('called layout')
-    console.log(this.layout);
-      }
-  ngOnInit() {
+  ngOnInit(): void {
+    this.readAppState();
   }
+  readAppState(): void {
+    this.riskIds = getRiskIds(this.store.getState());
+      }
+    }
 
-}
+

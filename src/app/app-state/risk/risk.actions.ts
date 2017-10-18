@@ -11,3 +11,7 @@ export const setCurrentRisk: ActionCreator<Action> = () => ({type:SET_CURRENT_RI
 
 export const ADD_NEW_RISK = 'ADD_NEWT_RISK';
 export const addNewRisk: ActionCreator<Action> = () => ({type:ADD_NEW_RISK })
+
+
+export const EDIT_RISK = 'EDIT_RISK';
+export const editRisk: ActionCreator<Action> = () => ({type:EDIT_RISK })

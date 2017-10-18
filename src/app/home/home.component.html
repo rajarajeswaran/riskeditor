@@ -2,11 +2,11 @@
 
     <div class="row">
         <div class="col-8">
-            HOME
-            <ng-container *ngFor="let window of layout.children; let i = index">
+           RISKS
+            <ng-container *ngFor="let riskId of riskIds">
                 <div class="card">
                     <div class="card-body">
-                        <app-risk></app-risk>
+                        <app-risk [riskId]=riskId ></app-risk>
                     </div>
                 </div>
             </ng-container>
