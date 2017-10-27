@@ -85,4 +85,6 @@ export class RiskComponent  implements OnInit  {
           }))
       .do(() => this.insuredSearching = false)
       .merge(this.insuredHideSearchingWhenUnsubscribed);
+      insuredDisplayFormat = (insobj) => <string>(insobj.Name);
+      insuredresultFormatter = (insobj) => <string>(insobj.Name);
 }
