@@ -19,8 +19,8 @@ import { RiskState } from './../app-state/risk/risk.state';
 import * as RiskActions from './../app-state/risk/risk.actions';
 import {Risk} from './../app-state/risk/risk.model'
 import { getRiskState, getRiskById } from '../app-state/risk/risk.reducer';
-import { WikiService } from '../resource/wiki/wiki.service';
-import { InsuredService } from '../resource/insured/insured.service';
+import {kvp} from '../resource/resource.model';
+import { InsuredService } from '../resource/rest/rest.service';
 
 
 
@@ -36,7 +36,7 @@ export class RiskComponent  implements OnInit  {
   @Input() riskId: string;
   risk : Risk;
 
-  constructor(@Inject(AppStore) private store: Redux.Store<AppState>, private _service: WikiService, private _insuredService: InsuredService) {
+  constructor(@Inject(AppStore) private store: Redux.Store<AppState>, private _insuredService: InsuredService) {
     store.subscribe(()=> this.readRiskState());
   }
 
@@ -49,25 +49,8 @@ export class RiskComponent  implements OnInit  {
       this.risk = riskTemp;
 
   }
-  model: any;
-  searching = false;
-  searchFailed = false;
-  hideSearchingWhenUnsubscribed = new Observable(() => () => this.searching = false);
-  search = (text$: Observable<string>) =>  text$
-    .debounceTime(300)
-    .distinctUntilChanged()
-    .do(() => this.searching = true)
-    .switchMap(term =>
-      this._service.search(term)
-        .do(() => this.searchFailed = false)
-        .catch(() => {
-          this.searchFailed = true;
-          return Observable.of([]);
-        }))
-    .do(() => this.searching = false)
-    .merge(this.hideSearchingWhenUnsubscribed);
 
-
+    xInsured: kvp;
 
     insuredSearching = false;
     insuredSearchFailed = false;
@@ -85,6 +68,6 @@ export class RiskComponent  implements OnInit  {
           }))
       .do(() => this.insuredSearching = false)
       .merge(this.insuredHideSearchingWhenUnsubscribed);
-      insuredDisplayFormat = (insobj) => <string>(insobj.Name);
-      insuredresultFormatter = (insobj) => <string>(insobj.Name);
+    insuredDisplayFormat = (insobj:kvp) => <string>(insobj.value);
+    insuredresultFormatter = (insobj:kvp) => <string>(insobj.value);
 }

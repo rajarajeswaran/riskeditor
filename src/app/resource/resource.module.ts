@@ -5,7 +5,7 @@ import { HttpModule,JsonpModule  } from '@angular/http';
 import { HttpClientModule  } from '@angular/common/http';
 
 import { WikiService } from './wiki/wiki.service';
-import { InsuredService } from './insured/insured.service';
+import { InsuredService } from './rest/rest.service';
 
 @NgModule({
   imports: [
