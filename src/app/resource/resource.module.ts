@@ -4,8 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpModule,JsonpModule  } from '@angular/http';
 import { HttpClientModule  } from '@angular/common/http';
 
-import { WikiService } from './wiki/wiki.service';
-import { InsuredService } from './rest/rest.service';
+import { InsuredService, CurrencyService, UnderwriterService } from './rest/rest.service';
 
 @NgModule({
   imports: [
@@ -18,8 +17,9 @@ import { InsuredService } from './rest/rest.service';
 
   ],
   providers:[
-    WikiService,
-    InsuredService
+    InsuredService,
+    CurrencyService,
+    UnderwriterService
   ],
   exports:[
 

@@ -1,17 +1,42 @@
 <div>
-    <p> RiskId  : {{riskId}} </p>
-    <p> PolicyId  : {{risk.PolicyId}} </p>
-    <p> Description  : {{risk.Description}} </p>
-    <p> Insured  : {{xInsured ? xInsured.value: ''}} </p>
-    <p>
-      <p>
-        <p>
-          <div class="form-group">
-            <label for="typeahead-http">Search for a insured:</label>
-            <input id="typeahead-http" type="text" class="form-control" [class.is-invalid]="insuredSearchFailed" [(ngModel)]="xInsured" [ngbTypeahead]="insuredSearch" placeholder="Insured search"  [inputFormatter] = "insuredDisplayFormat" [resultFormatter]="insuredresultFormatter" />
-            <span *ngIf="insuredSearching">searching...</span>
-            <div class="invalid-feedback" *ngIf="insuredSearchFailed">Sorry, suggestions could not be loaded.</div>
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col"><div class="form-group">
+              <label for="typeahead-insured">Insured</label>
+              <input id="typeahead-insured" type="text" class="form-control" [class.is-invalid]="insuredSearchFailed" [(ngModel)]="xInsured" [ngbTypeahead]="insuredSearch" placeholder="Insured search"  [inputFormatter] = "insuredDisplayFormat" [resultFormatter]="insuredresultFormatter" />
+              <span *ngIf="insuredSearching">searching...</span>
+              <div class="invalid-feedback" *ngIf="insuredSearchFailed">Sorry, suggestions could not be loaded.</div>
+            </div>
           </div>
-          <p>
-    </p>
-</div>
+          <div class="w-100"></div>
+          <div class="col"><div class="form-group">
+              <label for="text-description">Description</label>
+              <input id="text-description" type="text" class="form-control" [(ngModel)]="xDescription"/>
+            </div>
+          </div>
+          <div class="w-100"></div>
+          <div class="col">  <div class="form-group">
+              <label for="typeahead-currency">Currency</label>
+              <input id="typeahead-currency" type="text" class="form-control" [class.is-invalid]="currencySearchFailed" [(ngModel)]="xCurrency" [ngbTypeahead]="currencySearch" placeholder="Currency search"  [inputFormatter] = "currencyDisplayFormat" [resultFormatter]="currencyresultFormatter" />
+              <span *ngIf="currencySearching">searching...</span>
+              <div class="invalid-feedback" *ngIf="currencySearchFailed">Sorry, suggestions could not be loaded.</div>
+            </div>
+          </div>
+          <div class="col">  <div class="form-group">
+              <label for="datepicker-accountyear">Account Year</label>
+              <div class="input-group">
+              <input id="datepicker-accountyear" type="text" class="form-control" [(ngModel)]="xAccountYear" placeholder="yyyy"  ngbDatepicker #d="ngbDatepicker" />
+              <button class="input-group-addon" (click)="d.toggle()" type="button"> <fa name="calendar"> </fa></button>
+            </div>
+            </div>
+          </div>
+          <div class="col">  <div class="form-group">
+              <label for="typeahead-underwriter">Underwriter</label>
+              <input id="typeahead-underwriter" type="text" class="form-control" [class.is-invalid]="underwriterSearchFailed" [(ngModel)]="xUnderwriter" [ngbTypeahead]="underwriterSearch" placeholder="Underwriter search"  [inputFormatter] = "underwriterDisplayFormat" [resultFormatter]="underwriterresultFormatter" />
+              <span *ngIf="underwriterSearching">searching...</span>
+              <div class="invalid-feedback" *ngIf="underwriterSearchFailed">Sorry, suggestions could not be loaded.</div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>

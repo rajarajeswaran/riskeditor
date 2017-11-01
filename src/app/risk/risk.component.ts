@@ -20,7 +20,7 @@ import * as RiskActions from './../app-state/risk/risk.actions';
 import {Risk} from './../app-state/risk/risk.model'
 import { getRiskState, getRiskById } from '../app-state/risk/risk.reducer';
 import {kvp} from '../resource/resource.model';
-import { InsuredService } from '../resource/rest/rest.service';
+import { InsuredService, CurrencyService, UnderwriterService } from '../resource/rest/rest.service';
 
 
 
@@ -36,7 +36,7 @@ export class RiskComponent  implements OnInit  {
   @Input() riskId: string;
   risk : Risk;
 
-  constructor(@Inject(AppStore) private store: Redux.Store<AppState>, private _insuredService: InsuredService) {
+  constructor(@Inject(AppStore) private store: Redux.Store<AppState>, private _insuredService: InsuredService, private _currencyService: CurrencyService, private _underwriterService:UnderwriterService ) {
     store.subscribe(()=> this.readRiskState());
   }
 
@@ -50,7 +50,15 @@ export class RiskComponent  implements OnInit  {
 
   }
 
+    xPolicyId : string;
+    xDescription: string;
+    xGUID: string;
     xInsured: kvp;
+    xAccountYear:number;
+    xCurrency:kvp;
+    xUnderwriter:kvp;
+    xDomicile:kvp;
+    xPolicyStatus:kvp;
 
     insuredSearching = false;
     insuredSearchFailed = false;
@@ -70,4 +78,44 @@ export class RiskComponent  implements OnInit  {
       .merge(this.insuredHideSearchingWhenUnsubscribed);
     insuredDisplayFormat = (insobj:kvp) => <string>(insobj.value);
     insuredresultFormatter = (insobj:kvp) => <string>(insobj.value);
+
+
+    currencySearching = false;
+    currencySearchFailed = false;
+    currencyHideSearchingWhenUnsubscribed = new Observable(() => () => this.currencySearching = false);
+    currencySearch = (text$: Observable<string>) =>  text$
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .do(() => this.currencySearching = true)
+      .switchMap(term =>
+        this._currencyService.search(term)
+          .do(() => this.currencySearchFailed = false)
+          .catch((e) => {
+            this.currencySearchFailed = true;
+            return Observable.of([]);
+          }))
+      .do(() => this.currencySearching = false)
+      .merge(this.currencyHideSearchingWhenUnsubscribed);
+      currencyDisplayFormat = (insobj:kvp) => <string>(insobj.value);
+      currencyresultFormatter = (insobj:kvp) => <string>(insobj.value);
+
+
+      underwriterSearching = false;
+      underwriterSearchFailed = false;
+      underwriterHideSearchingWhenUnsubscribed = new Observable(() => () => this.underwriterSearching = false);
+      underwriterSearch = (text$: Observable<string>) =>  text$
+        .debounceTime(300)
+        .distinctUntilChanged()
+        .do(() => this.underwriterSearching = true)
+        .switchMap(term =>
+          this._underwriterService.search(term)
+            .do(() => this.underwriterSearchFailed = false)
+            .catch((e) => {
+              this.underwriterSearchFailed = true;
+              return Observable.of([]);
+            }))
+        .do(() => this.underwriterSearching = false)
+        .merge(this.underwriterHideSearchingWhenUnsubscribed);
+        underwriterDisplayFormat = (insobj:kvp) => <string>(insobj.value);
+        underwriterresultFormatter = (insobj:kvp) => <string>(insobj.value);
 }

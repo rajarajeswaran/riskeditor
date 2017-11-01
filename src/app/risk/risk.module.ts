@@ -7,11 +7,14 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap'
 // import { HttpModule,JsonpModule  } from '@angular/http';
 import { ResourceModule } from '../resource/resource.module';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    AngularFontAwesomeModule,
     NgbModule,
 
     ResourceModule
