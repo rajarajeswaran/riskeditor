@@ -37,6 +37,21 @@
               <div class="invalid-feedback" *ngIf="underwriterSearchFailed">Sorry, suggestions could not be loaded.</div>
             </div>
           </div>
+          <div class="w-100"></div>
+          <div class="col">  <div class="form-group">
+              <label for="typeahead-domicile">Domicile</label>
+              <input id="typeahead-domicile" type="text" class="form-control" [class.is-invalid]="domicileSearchFailed" [(ngModel)]="xDomicile" [ngbTypeahead]="domicileSearch" placeholder="Domicile search"  [inputFormatter] = "domicileDisplayFormat" [resultFormatter]="domicileresultFormatter" />
+              <span *ngIf="domicileSearching">searching...</span>
+              <div class="invalid-feedback" *ngIf="domicileSearchFailed">Sorry, suggestions could not be loaded.</div>
+            </div>
+          </div>
+          <div class="col">  <div class="form-group">
+            <label for="typeahead-policystatus">xPolicy Status</label>
+            <input id="typeahead-policystatus" type="text" class="form-control" [class.is-invalid]="policystatusSearchFailed" [(ngModel)]="xPolicyStatus" [ngbTypeahead]="policyStatusSearch" placeholder="Policy Status search"  [inputFormatter] = "policyStatusDisplayFormat" [resultFormatter]="policyStatusresultFormatter" />
+            <span *ngIf="policystatusSearching">searching...</span>
+            <div class="invalid-feedback" *ngIf="policystatusSearchFailed">Sorry, suggestions could not be loaded.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
