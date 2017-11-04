@@ -15,7 +15,8 @@ export class InsuredService {
           return Observable.of([]);
         }
 
-        let insuredServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Insured'
+        //let insuredServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Insured'
+        let insuredServiceUrl = './assets/data/insured.json'
         let params = new URLSearchParams();
         params.append('term', term);
         params.append('skip', '0');
