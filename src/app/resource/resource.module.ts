@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpModule,JsonpModule  } from '@angular/http';
 import { HttpClientModule  } from '@angular/common/http';
 
-import { InsuredService, CurrencyService, UnderwriterService, DomicileService, PolicyStatusService } from './rest/rest.service';
+import { InsuredService, CurrencyService, UnderwriterService, DomicileService, PolicyStatusService, BrokerService, OfficeService } from './rest/rest.service';
 
 @NgModule({
   imports: [
@@ -21,7 +21,9 @@ import { InsuredService, CurrencyService, UnderwriterService, DomicileService, P
     CurrencyService,
     UnderwriterService,
     DomicileService,
-    PolicyStatusService
+    PolicyStatusService,
+    BrokerService,
+    OfficeService
   ],
   exports:[
 

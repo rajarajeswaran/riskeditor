@@ -20,7 +20,7 @@ import * as RiskActions from './../app-state/risk/risk.actions';
 import {Risk} from './../app-state/risk/risk.model'
 import { getRiskState, getRiskById } from '../app-state/risk/risk.reducer';
 import {kvp} from '../resource/resource.model';
-import { InsuredService, CurrencyService, UnderwriterService, DomicileService, PolicyStatusService } from '../resource/rest/rest.service';
+import { InsuredService, CurrencyService, UnderwriterService, DomicileService, PolicyStatusService, BrokerService, OfficeService } from '../resource/rest/rest.service';
 
 
 
@@ -38,7 +38,7 @@ export class RiskComponent  implements OnInit  {
 
   constructor(@Inject(AppStore) private store: Redux.Store<AppState>, private _insuredService: InsuredService,
     private _currencyService: CurrencyService, private _underwriterService:UnderwriterService,  private _domicileService:DomicileService,
-    private _policyStatusService:PolicyStatusService) {
+    private _policyStatusService:PolicyStatusService, private _brokerService: BrokerService, private _officeService: OfficeService) {
     store.subscribe(()=> this.readRiskState());
   }
 
@@ -61,6 +61,9 @@ export class RiskComponent  implements OnInit  {
     xUnderwriter:kvp;
     xDomicile:kvp;
     xPolicyStatus:kvp;
+    xBroker:kvp;
+    xOrigOffice:kvp;
+    xIntroOffice:kvp;
 
     insuredSearching = false;
     insuredSearchFailed = false;
@@ -160,4 +163,45 @@ export class RiskComponent  implements OnInit  {
             .merge(this.policyStatusHideSearchingWhenUnsubscribed);
             policyStatusDisplayFormat = (insobj:kvp) => <string>(insobj.value);
             policyStatusresultFormatter = (insobj:kvp) => <string>(insobj.value);
+
+
+
+            brokerSearching = false;
+            brokerSearchFailed = false;
+            brokerHideSearchingWhenUnsubscribed = new Observable(() => () => this.brokerSearching = false);
+            brokerSearch = (text$: Observable<string>) =>  text$
+              .debounceTime(300)
+              .distinctUntilChanged()
+              .do(() => this.brokerSearching = true)
+              .switchMap(term =>
+                this._brokerService.search(term)
+                  .do(() => this.brokerSearchFailed = false)
+                  .catch((e) => {
+                    this.brokerSearchFailed = true;
+                    return Observable.of([]);
+                  }))
+              .do(() => this.brokerSearching = false)
+              .merge(this.brokerHideSearchingWhenUnsubscribed);
+              brokerDisplayFormat = (insobj:kvp) => <string>(insobj.value);
+              brokerResultFormatter = (insobj:kvp) => <string>(insobj.value);
+
+
+              officeSearching = false;
+              officeSearchFailed = false;
+              officeHideSearchingWhenUnsubscribed = new Observable(() => () => this.officeSearching = false);
+              officeSearch = (text$: Observable<string>) =>  text$
+                .debounceTime(300)
+                .distinctUntilChanged()
+                .do(() => this.officeSearching = true)
+                .switchMap(term =>
+                  this._officeService.search(term)
+                    .do(() => this.officeSearchFailed = false)
+                    .catch((e) => {
+                      this.officeSearchFailed = true;
+                      return Observable.of([]);
+                    }))
+                .do(() => this.officeSearching = false)
+                .merge(this.officeHideSearchingWhenUnsubscribed);
+                officeDisplayFormat = (insobj:kvp) => <string>(insobj.value);
+                officeResultFormatter = (insobj:kvp) => <string>(insobj.value);
 }

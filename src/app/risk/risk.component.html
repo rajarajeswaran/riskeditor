@@ -46,12 +46,33 @@
             </div>
           </div>
           <div class="col">  <div class="form-group">
-            <label for="typeahead-policystatus">xPolicy Status</label>
+            <label for="typeahead-policystatus">Policy Status</label>
             <input id="typeahead-policystatus" type="text" class="form-control" [class.is-invalid]="policystatusSearchFailed" [(ngModel)]="xPolicyStatus" [ngbTypeahead]="policyStatusSearch" placeholder="Policy Status search"  [inputFormatter] = "policyStatusDisplayFormat" [resultFormatter]="policyStatusresultFormatter" />
             <span *ngIf="policystatusSearching">searching...</span>
             <div class="invalid-feedback" *ngIf="policystatusSearchFailed">Sorry, suggestions could not be loaded.</div>
           </div>
         </div>
+        <div class="col">  <div class="form-group">
+          <label for="typeahead-broker">Broker</label>
+          <input id="typeahead-broker" type="text" class="form-control" [class.is-invalid]="brokerSearchFailed" [(ngModel)]="xBroker" [ngbTypeahead]="brokerSearch" placeholder="Broker search"  [inputFormatter] = "brokerDisplayFormat" [resultFormatter]="brokerResultFormatter" />
+          <span *ngIf="brokerSearching">searching...</span>
+          <div class="invalid-feedback" *ngIf="brokerSearchFailed">Sorry, suggestions could not be loaded.</div>
+        </div>
+      </div>
+      <div class="w-100"></div>
+      <div class="col">  <div class="form-group">
+        <label for="typeahead-origoffice">Orig. Office</label>
+        <input id="typeahead-origoffice" type="text" class="form-control" [class.is-invalid]="officeSearchFailed" [(ngModel)]="xOrigOffice" [ngbTypeahead]="officeSearch" placeholder="Broker search"  [inputFormatter] = "officeDisplayFormat" [resultFormatter]="officeResultFormatter" />
+        <span *ngIf="officeSearching">searching...</span>
+        <div class="invalid-feedback" *ngIf="officeSearchFailed">Sorry, suggestions could not be loaded.</div>
+      </div>
+      </div>
+      <div class="col">  <div class="form-group">
+        <label for="typeahead-introoffice">Intro. Office</label>
+        <input id="typeahead-introoffice" type="text" class="form-control" [class.is-invalid]="officeSearchFailed" [(ngModel)]="xIntroOffice" [ngbTypeahead]="officeSearch" placeholder="Broker search"  [inputFormatter] = "officeDisplayFormat" [resultFormatter]="officeResultFormatter" />
+        <span *ngIf="officeSearching">searching...</span>
+        <div class="invalid-feedback" *ngIf="officeSearchFailed">Sorry, suggestions could not be loaded.</div>
+      </div>
       </div>
     </div>
   </div>

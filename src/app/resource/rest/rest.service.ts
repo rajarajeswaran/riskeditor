@@ -117,3 +117,49 @@ export class CurrencyService {
                 .map(items =>    items.map(item => <kvp>{key : item.Code, value : item.Description, data:item}));
               }
         }
+
+
+        @Injectable()
+        export class BrokerService {
+            constructor(private _http: Http) {}
+                search(term: string) {
+                  if (term === '') {
+                    return Observable.of([]);
+                  }
+
+                  let brokerServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Broker'
+                  let params = new URLSearchParams();
+                  params.append('term', term);
+                  params.append('skip', '0');
+                  params.append('take', '10');
+
+                  return this._http
+                  .get(brokerServiceUrl,{params:params,withCredentials:true})
+                  .map(response =>  <any>response.json())
+                  .map(items =>    items.map(item => <kvp>{key : item.Code, value : item.Name, data:item}));
+                }
+          }
+
+
+
+        @Injectable()
+        export class OfficeService {
+            constructor(private _http: Http) {}
+                search(term: string) {
+                  if (term === '') {
+                    return Observable.of([]);
+                  }
+
+                  let officeServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Office'
+                  let params = new URLSearchParams();
+                  params.append('term', term);
+                  params.append('skip', '0');
+                  params.append('take', '10');
+
+                  return this._http
+                  .get(officeServiceUrl,{params:params,withCredentials:true})
+                  .map(response =>  <any>response.json())
+                  .map(items =>    items.map(item => <kvp>{key : item.Code, value : item.Name, data:item}));
+                }
+          }
+
