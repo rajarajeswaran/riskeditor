@@ -39,7 +39,8 @@ export class CurrencyService {
             return Observable.of([]);
           }
 
-          let currencyServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Currency'
+          //let currencyServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Currency'
+          let currencyServiceUrl = './assets/data/currency.json'
           let params = new URLSearchParams();
           params.append('term', term);
           params.append('skip', '0');
@@ -63,7 +64,8 @@ export class CurrencyService {
               return Observable.of([]);
             }
 
-            let underwriterServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Underwriter'
+            //let underwriterServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Underwriter'
+            let underwriterServiceUrl = './assets/data/underwriter.json'
             let params = new URLSearchParams();
             params.append('term', term);
             params.append('skip', '0');
@@ -84,7 +86,8 @@ export class CurrencyService {
                 return Observable.of([]);
               }
 
-              let domicileServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Domicile'
+              //let domicileServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Domicile';
+              let domicileServiceUrl = './assets/data/domicile.json';
               let params = new URLSearchParams();
               params.append('term', term);
               params.append('skip', '0');
@@ -105,7 +108,8 @@ export class CurrencyService {
                   return Observable.of([]);
                 }
 
-                let policyStatusServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/PolicyStatus'
+                //let policyStatusServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/PolicyStatus';
+                let policyStatusServiceUrl = './assets/data/policystatus.json'
                 let params = new URLSearchParams();
                 params.append('term', term);
                 params.append('skip', '0');
@@ -127,7 +131,8 @@ export class CurrencyService {
                     return Observable.of([]);
                   }
 
-                  let brokerServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Broker'
+                //  let brokerServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Broker'
+                  let brokerServiceUrl = './assets/data/broker.json'
                   let params = new URLSearchParams();
                   params.append('term', term);
                   params.append('skip', '0');
@@ -150,7 +155,8 @@ export class CurrencyService {
                     return Observable.of([]);
                   }
 
-                  let officeServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Office'
+                  //let officeServiceUrl = 'http://webservices-ci.globaldev.local/rest/api/Office'
+                  let officeServiceUrl = './assets/data/office.json'
                   let params = new URLSearchParams();
                   params.append('term', term);
                   params.append('skip', '0');
