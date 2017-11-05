@@ -48,7 +48,7 @@ export class RiskComponent  implements OnInit  {
   readRiskState() {
     var riskTemp = getRiskById(this.store.getState())(Number.parseInt(this.riskId)-1);
     if(this.risk !=  riskTemp )
-      this.risk = riskTemp;
+      this.risk = Object.assign({},riskTemp);
 
   }
 
@@ -64,6 +64,12 @@ export class RiskComponent  implements OnInit  {
     xBroker:kvp;
     xOrigOffice:kvp;
     xIntroOffice:kvp;
+
+
+    pushRiskToStore(){
+      this.risk.Description = this.xDescription;
+      this.store.dispatch(RiskActions.editRisk(this.risk))
+    }
 
     insuredSearching = false;
     insuredSearchFailed = false;

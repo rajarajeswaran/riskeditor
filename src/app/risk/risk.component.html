@@ -1,4 +1,5 @@
 <div>
+    <p><span>{{risk.GUID}}</span></p>
     <div class="container-fluid">
         <div class="row">
             <div class="col">
@@ -90,6 +91,12 @@
                     />
                     <span *ngIf="officeSearching">searching...</span>
                     <div class="invalid-feedback" *ngIf="officeSearchFailed">Sorry, suggestions could not be loaded.</div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col">
+                <div class="form-group">
+                    <button class="input" (click)="pushRiskToStore()" type="button"> <fa name="save"> </fa></button>
                 </div>
             </div>
         </div>

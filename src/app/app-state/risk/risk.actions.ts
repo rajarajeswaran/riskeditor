@@ -15,4 +15,4 @@ export const addNewRisk: ActionCreator<Action> = () => ({type:ADD_NEW_RISK })
 
 
 export const EDIT_RISK = 'EDIT_RISK';
-export const editRisk: ActionCreator<Action> = () => ({type:EDIT_RISK })
+export const editRisk: ActionCreator<Action> = (risk:Risk) => ({type:EDIT_RISK ,payLoad:risk})

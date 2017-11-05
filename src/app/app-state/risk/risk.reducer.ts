@@ -6,6 +6,7 @@ import { memoize } from 'lodash';
 import { RiskState } from './risk.state';
 import {Risk,AnalysisCode,Underwriter} from './risk.model'
 import * as RiskActions from './risk.actions';
+import { Guid } from '../../resource/rest/rest.service';
 
 const initialState: RiskState = {
 risks: new Array<Risk>()
@@ -19,7 +20,7 @@ function(state: RiskState = initialState, action: AnyAction): RiskState {
       var risk :Risk = {
         PolicyId : '',
         Description: '',
-        GUID:  '',
+        GUID:  Guid.newGuid(),
         Insured:  {InsuredId: 0,        InsuredName: '',        InsuredType: ''},
         AnalysisCodes:  new Array<AnalysisCode>(),
         AccountYear:0,
@@ -35,7 +36,11 @@ function(state: RiskState = initialState, action: AnyAction): RiskState {
 
     case RiskActions.EDIT_RISK:
       var newState1 =  Object.assign({}, state);
-      newState1.risks[0].Description = "EDIT"
+      var riskToEdit = <Risk> action.payLoad;
+var indexToEdit = newState1.risks.findIndex(r=>r.GUID == riskToEdit.GUID);
+
+      newState1.risks[ indexToEdit ] = riskToEdit
+
       return newState1;
     case RiskActions.SET_CURRENT_RISK:
     var copyState =  Object.assign({}, state);
@@ -46,6 +51,7 @@ function(state: RiskState = initialState, action: AnyAction): RiskState {
 };
 
 export const getRiskState = (state): RiskState => state.RiskState;
+export const getRisks = createSelector(getRiskState, rs => memoize(rs.risks));
 export const getRiskById  =   createSelector(getRiskState, rs => memoize(index => rs.risks[index]));
 export const getRiskIds  =   createSelector(getRiskState, rs => rs.risks.map(r=>r.PolicyId));
 
