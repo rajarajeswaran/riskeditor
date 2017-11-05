@@ -2,5 +2,9 @@ import {Risk} from './risk.model'
 
 export interface RiskState
 {
-  risks:Array<Risk>
+  risks:Array<Risk>;
+
+
 }
+
+

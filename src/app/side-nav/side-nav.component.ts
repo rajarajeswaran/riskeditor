@@ -3,7 +3,8 @@ import  * as Redux  from 'redux';
 
 import { AppStore } from '../app-state/app.store';
 import { AppState } from '../app-state/app.state';
-import { getRiskIds } from '../app-state/risk/risk.reducer';
+import { getRiskIds, getRiskById } from '../app-state/risk/risk.reducer';
+import * as RiskActions from '../app-state/risk/risk.actions';
 
 @Component({
   selector: 'app-side-nav',
@@ -23,6 +24,10 @@ export class SideNavComponent implements OnInit {
   readAppState(): void {
     this.riskIds = getRiskIds(this.store.getState());
       }
+setCurrentRisk(riskId:string){
+  var risk = getRiskById(this.store.getState())(Number.parseInt(riskId)-1)
+      this.store.dispatch(RiskActions.setCurrentRisk(risk));
     }
+}
 
 

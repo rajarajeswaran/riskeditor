@@ -9,6 +9,12 @@ export interface Risk {
   Underwriter: Underwriter;
   Domicile:string;
   PolicyStatus:string;
+
+  UxState:UxState;
+}
+
+export interface UxState{
+  IsActive:boolean
 }
 
 export interface Insured{

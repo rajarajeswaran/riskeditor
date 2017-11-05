@@ -21,17 +21,17 @@ import * as RiskActions from '../app-state/risk/risk.actions';
 export class TopNavComponent implements OnInit {
 
   public isCollapsed = true;
-  layout : LayoutState;
+
   risk : RiskState;
   constructor(@Inject(AppStore) private store: Redux.Store<AppState>) {
-    store.subscribe(()=> this.readLayoutState());
-    this.readLayoutState();
+    store.subscribe(()=> this.readState());
+    this.readState();
   }
 
   ngOnInit() {
   }
-  readLayoutState(): void {
-    this.layout = getLayoutState(this.store.getState());
+  readState(): void {
+
     this.risk = getRiskState(this.store.getState());
       }
 
