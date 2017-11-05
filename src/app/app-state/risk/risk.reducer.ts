@@ -26,13 +26,10 @@ function(state: RiskState = initialState, action: AnyAction): RiskState {
         Currency:'',
         Underwriter : { Code:  '',        Name:  ''},
         Domicile:'',
-        PolicyStatus:'',
-        UxState:{IsActive:false}
+        PolicyStatus:''
       };
       risk.PolicyId =(state.risks.length?state.risks.length+1:1).toString();
       var mutation = state.risks.concat([risk]);
-      mutation.forEach(r => r.UxState.IsActive = false);
-      mutation[mutation.length-1].UxState.IsActive = true;
       var newState =  Object.assign({}, state, {risks:mutation});
       return newState;
 
@@ -42,18 +39,6 @@ function(state: RiskState = initialState, action: AnyAction): RiskState {
       return newState1;
     case RiskActions.SET_CURRENT_RISK:
     var copyState =  Object.assign({}, state);
-    copyState.risks.forEach(
-      (r,i)=> {
-        var currentRisk =  <Risk> action.payload;
-        if(r == currentRisk) {
-          r.UxState.IsActive = true
-        }
-        else if(r.UxState.IsActive)
-          {r.UxState.IsActive = false}
-
-    }
-
-    );
     return copyState;
     default:
       return state;

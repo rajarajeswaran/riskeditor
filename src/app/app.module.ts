@@ -24,8 +24,9 @@ import { appStoreProviders } from './app-state/app.store';
   declarations: [
     AppComponent,
     TopNavComponent,
-    HomeComponent,
-    SideNavComponent
+    HomeComponent
+    // ,
+    // SideNavComponent
   ],
   imports: [
     AngularFontAwesomeModule,

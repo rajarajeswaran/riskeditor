@@ -1,14 +1,16 @@
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-8">
-            <ng-container *ngFor="let riskId of riskIds">
-                <div class="card">
-                    <div class="card-body">
-                        <app-risk [riskId]=riskId ></app-risk>
-                    </div>
-                </div>
-            </ng-container>
+        <div class="col-12">
+            <ngb-accordion #acc="ngbAccordion">
+                <ng-container *ngFor="let riskId of riskIds">
+                    <ngb-panel id="toggle-{{riskId}}" title="Row - {{riskId}}">
+                        <ng-template ngbPanelContent>
+                            <app-risk [riskId]=riskId></app-risk>
+                        </ng-template>
+                    </ngb-panel>
+                </ng-container>
+            </ngb-accordion>
         </div>
     </div>
 

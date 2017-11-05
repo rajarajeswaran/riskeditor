@@ -10,12 +10,12 @@ export interface Risk {
   Domicile:string;
   PolicyStatus:string;
 
-  UxState:UxState;
+ // UxState:UxState;
 }
 
-export interface UxState{
-  IsActive:boolean
-}
+// export interface UxState{
+//   IsActive:boolean
+// }
 
 export interface Insured{
   InsuredId: number;
