@@ -67,7 +67,23 @@ export class RiskComponent  implements OnInit  {
 
 
     pushRiskToStore(){
+
       this.risk.Description = this.xDescription;
+      this.risk.AccountYear = 2001;
+      this.risk.Currency = this.xCurrency && this.xCurrency.key || '';
+      this.risk.Domicile = this.xDomicile && this.xDomicile.key || '';
+      this.risk.Insured = this.xInsured &&  {InsuredId : Number.parseInt(this.xInsured.key), InsuredName: this.xInsured.value, InsuredType :'MAIN' } || null;
+
+      this.risk.AnalysisCodes.splice(0,this.risk.AnalysisCodes.length);
+      this.xCurrency && this.risk.AnalysisCodes.push({Code:this.xCurrency.key,Type:'CURRENCY',Description:this.xCurrency.value});
+      this.xDomicile && this.risk.AnalysisCodes.push({Code:this.xDomicile.key,Type:'CURRENCY',Description:this.xDomicile.value});
+      this.xCurrency && this.risk.AnalysisCodes.push({Code:this.xCurrency.key,Type:'CURRENCY',Description:this.xCurrency.value});
+      this.xBroker && this.risk.AnalysisCodes.push({Code:this.xBroker.key,Type:'CURRENCY',Description:this.xBroker.value});
+      this.xOrigOffice && this.risk.AnalysisCodes.push({Code:this.xOrigOffice.key,Type:'CURRENCY',Description:this.xOrigOffice.value});
+      this.xIntroOffice && this.risk.AnalysisCodes.push({Code:this.xIntroOffice.key,Type:'CURRENCY',Description:this.xIntroOffice.value});
+
+
+
       this.store.dispatch(RiskActions.editRisk(this.risk))
     }
 
